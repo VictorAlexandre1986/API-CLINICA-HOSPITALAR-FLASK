@@ -3,7 +3,12 @@ from flask_cors import CORS
 from flask_restx import Api
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from application.rest.pergunta.criar_pergunta import api_criar_pergunta
+
+from application.rest.pergunta.criar_login import api_criar_login
+from application.rest.pergunta.buscar_login import api_buscar_login
+from application.rest.pergunta.atualizar_login import api_atualizar_login
+from application.rest.pergunta.deletar_login import api_deletar_login
+
 
 
 
@@ -22,7 +27,10 @@ class ServeApplication:
             doc="/docs",
         )
 
-        api.add_namespace(api_criar_pergunta)
+        api.add_namespace(api_criar_login)
+        api.add_namespace(api_buscar_login)
+        api.add_namespace(api_atualizar_login)
+        api.add_namespace(api_deletar_login)
 
         
         app.register_blueprint(self._blueprint)
