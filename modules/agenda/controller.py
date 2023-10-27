@@ -30,7 +30,7 @@ class AgendaController:
     def atualizar_agenda(data: dict, id: int):
         data_dto = AgendaDTO(**data)
         repository = AgendaRepository()
-        result = AgendaUseCase(repository).atualizar_agenda(id = id, cpf = data_dto.cpf, dia = data_dto.dia, hora = data_dto.hora, procedimento = data_dto.procedimento, medico= data_dto.medico, update_create=datetime.utcnow)
+        result = AgendaUseCase(repository).atualizar_agenda(id = id, cpf = data_dto.cpf, dia = data_dto.dia, hora = data_dto.hora, procedimento = data_dto.procedimento, medico= data_dto.medico)
         return result
     
     @staticmethod

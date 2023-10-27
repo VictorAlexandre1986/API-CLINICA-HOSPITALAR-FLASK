@@ -55,7 +55,6 @@ class AgendaRepository(AgendaRepositoryInterface):
                 data.hora = hora
                 data.procedimento = procedimento
                 data.medico = medico
-                data.update_create = datetime.utcnow
                 db_connection.session.commit()
                 return self._criar_agenda_objeto(data)
             return None

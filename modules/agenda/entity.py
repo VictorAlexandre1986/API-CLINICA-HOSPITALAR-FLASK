@@ -9,5 +9,3 @@ class AgendaEntity(BaseModel):
     hora: time
     procedimento: str
     medico: str 
-    date_create : datetime
-    update_create: datetime
