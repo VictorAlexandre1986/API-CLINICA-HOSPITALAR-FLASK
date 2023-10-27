@@ -44,6 +44,11 @@ from application.rest.vacina.buscar_vacina import api_buscar_vacina
 from application.rest.vacina.atualizar_vacina import api_atualizar_vacina
 from application.rest.vacina.deletar_vacina import api_deletar_vacina
 
+from application.rest.auxiliar.criar_auxiliar import api_criar_auxiliar
+from application.rest.auxiliar.buscar_auxiliar import api_buscar_auxiliar
+from application.rest.auxiliar.atualizar_auxiliar import api_atualizar_auxiliar
+from application.rest.auxiliar.deletar_auxiliar import api_deletar_auxiliar
+
 
 class ServeApplication:
 
@@ -98,6 +103,11 @@ class ServeApplication:
         api.add_namespace(api_buscar_vacina)
         api.add_namespace(api_atualizar_vacina)
         api.add_namespace(api_deletar_vacina)
+
+        api.add_namespace(api_criar_auxiliar)
+        api.add_namespace(api_buscar_auxiliar)
+        api.add_namespace(api_atualizar_auxiliar)
+        api.add_namespace(api_deletar_auxiliar)
 
 
 
