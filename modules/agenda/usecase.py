@@ -19,4 +19,4 @@ class AgendaUseCase:
         return self.agenda_repository.deletar_agenda(id)
     
     def atualizar_agenda(self,id:int, cpf: str, dia:datetime, hora:time, procedimento:str, medico:str):
-        return self.login_repository.atualizar_agenda(id,  cpf, dia, hora, procedimento, medico)
+        return self.agenda_repository.atualizar_agenda(id,  cpf, dia, hora, procedimento, medico)

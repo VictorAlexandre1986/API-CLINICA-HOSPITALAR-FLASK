@@ -24,7 +24,7 @@ class AgendaRepository(AgendaRepositoryInterface):
                 novo_agenda = Agenda(id=id, cpf=cpf, dia=dia, hora=hora, procedimento=procedimento, medico=medico)
                 db_connection.session.add(novo_agenda)
                 db_connection.session.commit()
-                return self._criar_login_objeto(novo_agenda)
+                return self._criar_agenda_objeto(novo_agenda)
         except Exception as exc:
             raise exc
 
@@ -65,5 +65,5 @@ class AgendaRepository(AgendaRepositoryInterface):
             if  data is not None:
                 db_connection.session.delete(data)
                 db_connection.session.commit()
-                return self._criar_login_objeto(data)
+                return self._criar_agenda_objeto(data)
             return data

@@ -7,16 +7,16 @@ class ProntuarioUseCase:
         
     
     def criar_prontuario(self, id: int, cpf: str, procedimento: int, vacina: int):
-        return self.aprontuario_repository.criar_prontuario(id, cpf, procedimento, vacina)
+        return self.prontuario_repository.criar_prontuario(id, cpf, procedimento, vacina)
     
     def buscar_prontuario_por_id(self, id: int):
-        return self.aprontuario_repository.buscar_prontuario_por_id(id)
+        return self.prontuario_repository.buscar_prontuario_por_id(id)
     
     def buscar_prontuarios(self):
-        return self.aprontuario_repository.buscar_prontuarios()
+        return self.prontuario_repository.buscar_prontuarios()
     
     def deletar_prontuario(self, id: int):
-        return self.aprontuario_repository.deletar_prontuario(id)
+        return self.prontuario_repository.deletar_prontuario(id)
     
     def atualizar_prontuario(self,id:int, cpf: str, procedimento:str, vacina: int):
-        return self.login_repository.atualizar_prontuario(id, cpf, procedimento, vacina)
+        return self.prontuario_repository.atualizar_prontuario(id, cpf, procedimento, vacina)
