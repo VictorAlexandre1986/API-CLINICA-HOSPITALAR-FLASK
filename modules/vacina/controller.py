@@ -3,7 +3,7 @@ from modules.vacina.repository.data_base.vacina_repo import VacinaRepository
 from modules.vacina.usecase import VacinaUseCase
 
 
-class VacinaaController:
+class VacinaController:
 
     @staticmethod
     def criar_vacina(data: dict):
