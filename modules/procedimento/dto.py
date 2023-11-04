@@ -4,8 +4,5 @@ from datetime import datetime,time
 
 class ProcedimentoDTO(BaseModel):
     id: int 
-    data: datetime
-    hora: time
     procedimento: str
-    medico: str 
-    auxiliar: str
+    preco: float

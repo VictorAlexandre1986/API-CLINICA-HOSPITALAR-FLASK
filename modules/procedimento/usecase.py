@@ -7,7 +7,7 @@ class ProcedimentoUseCase:
         
     
     def criar_procedimento(self, id: int, data: datetime, hora: time, procedimento: str, medico: str, auxiliar: str):
-        return self.procedimento_repository.criar_vacina(id, data, hora, procedimento, medico, auxiliar)
+        return self.procedimento_repository.criar_procedimento(id, data, hora, procedimento, medico, auxiliar)
     
     def buscar_procedimento_por_id(self, id: int):
         return self.procedimento_repository.buscar_procedimento_por_id(id)
