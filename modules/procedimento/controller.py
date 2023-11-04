@@ -9,7 +9,7 @@ class ProcedimentoController:
     def criar_procedimento(data: dict):
         data_dto = ProcedimentoDTO(**data)
         repository = ProcedimentoRepository()
-        result = ProcedimentoUseCase(repository).criar_procedimento(id = data_dto.id, data = data_dto.data, hora = data_dto.hora, procedimento = data_dto.procedimento, medico = data_dto.medico, auxiliar= data_dto.auxiliar)
+        result = ProcedimentoUseCase(repository).criar_procedimento(id = data_dto.id, procedimento = data_dto.procedimento, preco = data_dto.preco)
         return result
     
     @staticmethod
@@ -29,7 +29,7 @@ class ProcedimentoController:
     def atualizar_procedimento(data: dict, id: int):
         data_dto = ProcedimentoDTO(**data)
         repository = ProcedimentoRepository()
-        result = ProcedimentoUseCase(repository).atualizar_procedimento(id = data_dto.id, data = data_dto.data, hora = data_dto.hora, procedimento = data_dto.procedimento, medico = data_dto.medico, auxiliar= data_dto.auxiliar)
+        result = ProcedimentoUseCase(repository).atualizar_procedimento(id = data_dto.id, procedimento = data_dto.procedimento, preco = data_dto.preco)
         return result
     
     @staticmethod

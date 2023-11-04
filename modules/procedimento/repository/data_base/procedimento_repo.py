@@ -11,17 +11,14 @@ class ProcedimentoRepository(ProcedimentoRepositoryInterface):
     def _criar_procedimento_objeto(self, procedimento):
         return ProcedimentoDTO(
             id = procedimento.id,
-            data = procedimento.data,
-            hora = procedimento.hora,
             procedimento = procedimento.procedimento,
-            medico = procedimento.medico,
-            auxiliar = procedimento.auxiliar
+            preco = procedimento.preco
         )
 
-    def criar_procedimento(self, id: int, data: datetime, hora: time, procedimento: str, medico: str, auxiliar: str):
+    def criar_procedimento(self, id: int, procedimento: str, preco: float):
         try:
             with DBConnectionHandler() as db_connection:
-                novo_procedimento = Procedimento(id=id, data = data, hora = hora, procedimento = procedimento, medico = medico, auxiliar = auxiliar)
+                novo_procedimento = Procedimento(id=id, procedimento = procedimento, preco = preco)
                 db_connection.session.add(novo_procedimento)
                 db_connection.session.commit()
                 return self._criar_procedimento_objeto(novo_procedimento)
@@ -45,16 +42,13 @@ class ProcedimentoRepository(ProcedimentoRepositoryInterface):
                 )
             return list_procedimentos
         
-    def atualizar_procedimento(self, id: int, data: datetime, hora: time, procedimento: str, medico: str, auxiliar: str):
+    def atualizar_procedimento(self, id: int, procedimento: str, preco: float):
         with DBConnectionHandler() as db_connection:
             data = db_connection.session.query(Procedimento).filter(Procedimento.id == id).one_or_none()
             if data:
                 data.id = id
-                data.data = data
-                data.hora = hora
                 data.procedimento = procedimento
-                data.medico = medico
-                data.auxiliar = auxiliar
+                data.preco = preco
                 db_connection.session.commit()
                 return self._criar_procedimento_objeto(data)
             return None
