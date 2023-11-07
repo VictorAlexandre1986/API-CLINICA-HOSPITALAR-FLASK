@@ -9,7 +9,7 @@ class PagamentoController:
     def criar_pagamento(data: dict):
         data_dto = PagamentoDTO(**data)
         repository = PagamentoRepository()
-        result = PagamentoUseCase(repository).criar_pagamento(id = data_dto.id, id_paciente= data_dto.id_paciente, data= data_dto.data, descricao_procedimentos=data_dto.procedimento, descricao_exames=data_dto.exame, descricao_vacinas= data_dto.vacina, preco=data_dto.preco)
+        result = PagamentoUseCase(repository).criar_pagamento(id = data_dto.id, id_paciente= data_dto.id_paciente, data= data_dto.data, descricao_procedimentos=data_dto.descricao_procedimentos, descricao_exames=data_dto.descricao_exames, descricao_vacinas= data_dto.descricao_vacinas, preco=data_dto.preco)
         return result
     
     @staticmethod
@@ -30,7 +30,7 @@ class PagamentoController:
     def atualizar_pagamento(data: dict, id: int):
         data_dto = PagamentoDTO(**data)
         repository = PagamentoRepository()
-        result = PagamentoUseCase(repository).atualizar_pagamento(id = id, id_paciente= data_dto.id_paciente, data= data_dto.data, descricao_procedimento=data_dto.procedimento, descricao_exame=data_dto.exame, descricao_vacina= data_dto.vacina, preco=data_dto.preco)
+        result = PagamentoUseCase(repository).atualizar_pagamento(id = id, id_paciente= data_dto.id_paciente, data= data_dto.data, descricao_procedimento=data_dto.descricao_procedimentos, descricao_exame=data_dto.descricao_exames, descricao_vacina= data_dto.descricao_vacinas, preco=data_dto.preco)
         return result
     
     @staticmethod

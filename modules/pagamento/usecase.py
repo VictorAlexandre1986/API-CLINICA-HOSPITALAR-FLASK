@@ -19,5 +19,5 @@ class PagamentoUseCase:
     def deletar_pagamento(self, id: int):
         return self.pagamento_repository.deletar_pagamento(id)
     
-    def atualizar_pagamento(self, id: int, id_paciente:int, data: datetime, descricao_procedimento: List[str], descricao_exame: List[str], descricao_vacina: [str], preco: float):
-        return self.pagamento_repository.atualizar_pagamento(id, id_paciente, data, descricao_procedimento, descricao_exame, descricao_vacina, preco)
+    def atualizar_pagamento(self, id: int, id_paciente:int, data: datetime, descricao_procedimentos: List[str], descricao_exames: List[str], descricao_vacinas: [str], preco: float):
+        return self.pagamento_repository.atualizar_pagamento(id, id_paciente, data, descricao_procedimentos, descricao_exames, descricao_vacinas, preco)
