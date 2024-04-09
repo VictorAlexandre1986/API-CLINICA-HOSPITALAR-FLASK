@@ -49,6 +49,21 @@ from application.rest.auxiliar.buscar_auxiliar import api_buscar_auxiliar
 from application.rest.auxiliar.atualizar_auxiliar import api_atualizar_auxiliar
 from application.rest.auxiliar.deletar_auxiliar import api_deletar_auxiliar
 
+from application.rest.procedimento.criar_procedimento import api_criar_procedimento
+from application.rest.procedimento.buscar_procedimento import api_buscar_procedimento
+from application.rest.procedimento.atualizar_procedimento import api_atualizar_procedimento
+from application.rest.procedimento.deletar_procedimento import api_deletar_procedimento
+
+from application.rest.pagamento.criar_pagamento import api_criar_pagamento
+from application.rest.pagamento.buscar_pagamento import api_buscar_pagamento
+from application.rest.pagamento.atualizar_pagamento import api_atualizar_pagamento
+from application.rest.pagamento.deletar_pagamento import api_deletar_pagamento
+
+from application.rest.exame.criar_exame import api_criar_exame
+from application.rest.exame.buscar_exame import api_buscar_exame
+from application.rest.exame.atualizar_exame import api_atualizar_exame
+from application.rest.exame.deletar_exame import api_deletar_exame
+
 
 class ServeApplication:
 
@@ -108,6 +123,16 @@ class ServeApplication:
         api.add_namespace(api_buscar_auxiliar)
         api.add_namespace(api_atualizar_auxiliar)
         api.add_namespace(api_deletar_auxiliar)
+        
+        api.add_namespace(api_criar_procedimento)
+        api.add_namespace(api_buscar_procedimento)
+        api.add_namespace(api_atualizar_procedimento)
+        api.add_namespace(api_deletar_procedimento)
+        
+        api.add_namespace(api_criar_exame)
+        api.add_namespace(api_buscar_exame)
+        api.add_namespace(api_atualizar_exame)
+        api.add_namespace(api_deletar_exame)
 
 
 

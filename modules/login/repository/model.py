@@ -1,7 +1,8 @@
 from sqlalchemy import Column, Integer, String, DateTime, Time
 from sqlalchemy.orm import relationship
-from modules.procedimento.repository.data_base.model import Procedimento
+from modules.paciente.repository.data_base.model import Paciente
 from modules.medico.repository.data_base.model import Medico
+from modules.auxiliar.repository.data_base.model import Auxiliar
 
 from infra.db import Base
 
@@ -13,6 +14,7 @@ class Login(Base):
     senha = Column(String, nullable=False)
     
     # Relacionamentos
-    fk_procedimento = relationship(Procedimento, back_populates='agenda')
-    fk_medico = relationship(Medico, back_populates='agenda')
+    fk_paciente = relationship(Paciente, back_populates='login')
+    fk_auxiliar = relationship(Auxiliar, back_populates='login')
+    fk_medico = relationship(Medico, back_populates='login')
     
