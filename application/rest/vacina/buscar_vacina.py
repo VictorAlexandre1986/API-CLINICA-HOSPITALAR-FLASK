@@ -73,8 +73,9 @@ class BuscarVacinas(Resource):
             )
 
         except Exception as exc:
-            return Response(
-                json.dumps({"msg": 'Bad request'}),
-                mimetype="application/json",
-                status=HTTPStatus.BAD_REQUEST
-            )
+            print(exc)
+            # return Response(
+            #     json.dumps({"msg": 'Bad request'}),
+            #     mimetype="application/json",
+            #     status=HTTPStatus.BAD_REQUEST
+            # )

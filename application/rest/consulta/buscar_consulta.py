@@ -5,7 +5,7 @@ from flask import Response
 from flask_restx import Namespace, Resource
 from pydantic import ValidationError
 
-from modules.consulta.controller import ConsultaController
+from modules.consulta.controller import consultaController
 
 api_buscar_consulta = Namespace("consulta", description="Endpoint buscar consulta")
 
@@ -15,7 +15,7 @@ class BuscarConsultaPorId(Resource):
 
     def get(self, id: int):
         try:
-            response = ConsultaController.buscar_consulta_por_id(id)
+            response = consultaController.buscar_consulta_por_id(id)
             return Response(
                 response.json(),
                 mimetype="application/json",
@@ -51,7 +51,7 @@ class BuscarConsultas(Resource):
 
     def get(self):
         try:
-            response = ConsultaController.buscar_consultas()
+            response = consultaController.buscar_consultas()
             return Response(
                 json.dumps(response),
                 mimetype="application/json",

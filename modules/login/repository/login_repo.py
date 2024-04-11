@@ -1,6 +1,6 @@
 from infra.db.db_config import DBConnectionHandler
-from modules.login.repository.data_base.interface import LoginRepositoryInterface
-from modules.login.repository.data_base.model import Login
+from modules.login.repository.interface import LoginRepositoryInterface
+from modules.login.repository.model import Login
 from modules.login.dto import LoginDTO
 from datetime import datetime, time
 import uuid as uuid

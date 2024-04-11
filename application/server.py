@@ -2,6 +2,9 @@ from flask import Blueprint, Flask
 from flask_cors import CORS
 from flask_restx import Api
 from werkzeug.middleware.proxy_fix import ProxyFix
+from flask_jwt_extended import JWTManager
+from flask import current_app
+
 
 
 from application.rest.login.criar_login import api_criar_login
@@ -70,6 +73,8 @@ class ServeApplication:
     def __init__(self):
         self.app = Flask(__name__)
         self._blueprint = Blueprint("api", __name__, url_prefix="/api/v1")
+        self.app.config['JWT_SECRET_KEY'] = 'victor'  # Troque isso por uma chave segura em um ambiente de produção
+        jwt = JWTManager(self.app)
 
     def _init_blueprints(self, app):
         api = Api(
@@ -79,7 +84,8 @@ class ServeApplication:
             doc="/docs",
         )
 
-        api.add_namesppace(api_criar_login)
+       
+        api.add_namespace(api_criar_login)
         api.add_namespace(api_buscar_login)
         api.add_namespace(api_atualizar_login)
         api.add_namespace(api_deletar_login)
@@ -145,6 +151,7 @@ class ServeApplication:
 
         self._init_blueprints(self.app)
         CORS(self.app)
+        
 
         return self.app
 

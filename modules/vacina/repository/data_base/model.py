@@ -2,7 +2,7 @@ from sqlalchemy import Column, String, Float
 from sqlalchemy.orm import relationship
 from modules.consulta.repository.data_base.model import Consulta
 
-from infra.db import Base
+from infra.db.db_base import Base
 
 class Vacina(Base):
     __tablename__ = "tb_vacina"
@@ -13,4 +13,4 @@ class Vacina(Base):
     valor = Column(Float, nullable=False)
 
     # Relacionamentos
-    fk_consulta = relationship(Consulta, back_populates='vacina')
+    # fk_consulta = relationship('Consulta', back_populates='vacina')

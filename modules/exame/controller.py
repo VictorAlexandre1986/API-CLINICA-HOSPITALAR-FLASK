@@ -3,7 +3,7 @@ from modules.exame.repository.data_base.exame_repo import ExameRepository
 from modules.exame.usecase import ExameUseCase
 
 
-class exameController:
+class ExameController:
 
     @staticmethod
     def criar_exame(data: dict):

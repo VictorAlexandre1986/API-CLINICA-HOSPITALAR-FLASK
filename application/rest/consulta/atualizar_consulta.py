@@ -5,7 +5,7 @@ from flask import Response, request
 from flask_restx import Namespace, Resource
 from pydantic import ValidationError
 
-from modules.consulta.controller import ConsultaController
+from modules.consulta.controller import consultaController
 
 api_atualizar_consulta = Namespace("consulta", description="Endpoint atualizar consulta")
 
@@ -16,7 +16,7 @@ class AtualizarConsulta(Resource):
     def patch(self, id: int):
         data = api_atualizar_consulta.payload
         try:
-            response = ConsultaController.atualizar_consulta(data,id)
+            response = consultaController.atualizar_consulta(data,id)
             return Response(
                 response.json(),
                 mimetype="application/json",

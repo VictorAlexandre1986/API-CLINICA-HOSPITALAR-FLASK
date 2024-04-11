@@ -1,5 +1,5 @@
 from modules.login.dto import LoginDTO
-from modules.login.repository.data_base.login_repo import LoginRepository
+from modules.login.repository.login_repo import LoginRepository
 from modules.login.usecase import LoginUseCase
 
 

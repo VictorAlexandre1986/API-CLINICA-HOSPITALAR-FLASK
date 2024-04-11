@@ -5,7 +5,7 @@ from flask import Response, request
 from flask_restx import Namespace, Resource
 from pydantic import ValidationError
 
-from modules.consulta.controller import ConsultaController
+from modules.consulta.controller import consultaController
 
 api_deletar_consulta = Namespace("consulta", description="Endpoint deletar consulta")
 
@@ -15,7 +15,7 @@ class DeletarConsulta(Resource):
 
     def delete(self, id: int):
         try:
-            ConsultaController.deletar_consulta(id)
+            consultaController.deletar_consulta(id)
             return Response(
                 json.dumps({"msg": "Excluído com sucesso."}),
                 mimetype="application/json",

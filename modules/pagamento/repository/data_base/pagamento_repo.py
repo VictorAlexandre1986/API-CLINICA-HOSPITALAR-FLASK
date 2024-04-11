@@ -3,7 +3,7 @@ from modules.pagamento.repository.data_base.interface import PagamentoRepository
 from modules.pagamento.repository.data_base.model import Pagamento
 from modules.procedimento.repository.data_base.model import Procedimento
 from modules.exame.repository.data_base.model import Exame
-from modules.exame.repository.data_base.model import Vacina
+from modules.vacina.repository.data_base.model import Vacina
 from modules.pagamento.dto import PagamentoDTO,Pagamento_procedimentoDTO,Pagamento_exameDTO,Pagamento_vacinaDTO
 from datetime import datetime, time
 import uuid as uuid
