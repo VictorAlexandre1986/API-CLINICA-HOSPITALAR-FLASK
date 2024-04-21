@@ -8,17 +8,17 @@ import uuid as uuid
 
 class ExameRepository(ExameRepositoryInterface):
 
-    def _criar_exame_objeto(self, exame):
+    def _criar_exame_objeto(self, dto_exame):
         return ExameDTO(
-            id = exame.id,
-            exame = exame.exame,
-            preco = exame.preco
+            id = dto_exame.id,
+            tipo_exame = dto_exame.tipo_exame,
+            valor = dto_exame.valor
         )
 
-    def criar_exame(self, id: int, exame: str, preco: float):
+    def criar_exame(self, id: int, tipo_exame: str, valor: float):
         try:
             with DBConnectionHandler() as db_connection:
-                novo_exame = exame(id=id, exame = exame, preco = preco)
+                novo_exame = Exame(id=id, tipo_exame=tipo_exame, valor=valor)
                 db_connection.session.add(novo_exame)
                 db_connection.session.commit()
                 return self._criar_exame_objeto(novo_exame)
@@ -42,13 +42,13 @@ class ExameRepository(ExameRepositoryInterface):
                 )
             return list_exames
         
-    def atualizar_exame(self, id: int, exame: str, preco: float):
+    def atualizar_exame(self, id: int, tipo_exame: str, valor: float):
         with DBConnectionHandler() as db_connection:
             data = db_connection.session.query(Exame).filter(Exame.id == id).one_or_none()
             if data:
                 data.id = id
-                data.exame = exame
-                data.preco = preco
+                data.tipo_exame = tipo_exame
+                data.valor = valor
                 db_connection.session.commit()
                 return self._criar_exame_objeto(data)
             return None

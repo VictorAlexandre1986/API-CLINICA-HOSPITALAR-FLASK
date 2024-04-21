@@ -9,7 +9,8 @@ class ExameController:
     def criar_exame(data: dict):
         data_dto = ExameDTO(**data)
         repository = ExameRepository()
-        result = ExameUseCase(repository).criar_exame(id = data_dto.id, exame = data_dto.exame, preco = data_dto.preco)
+        result = ExameUseCase(repository).criar_exame(id = data_dto.id, tipo_exame = data_dto.tipo_exame, valor = data_dto.valor)
+        print(result)
         return result
     
     @staticmethod
@@ -29,7 +30,7 @@ class ExameController:
     def atualizar_exame(data: dict, id: int):
         data_dto = ExameDTO(**data)
         repository = ExameRepository()
-        result = ExameUseCase(repository).atualizar_exame(id = data_dto.id, exame = data_dto.exame, preco = data_dto.preco)
+        result = ExameUseCase(repository).atualizar_exame(id = data_dto.id, tipo_exame = data_dto.tipo_exame, valor = data_dto.valor)
         return result
     
     @staticmethod

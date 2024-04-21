@@ -6,8 +6,8 @@ class ExameUseCase:
         self.exame_repository = exame_repository
         
     
-    def criar_exame(self, id: int,exame: str, preco: float):
-        return self.exame_repository.criar_exame(id, exame, preco)
+    def criar_exame(self, id: int,tipo_exame: str, valor: float):
+        return self.exame_repository.criar_exame(id, tipo_exame, valor)
     
     def buscar_exame_por_id(self, id: int):
         return self.exame_repository.buscar_exame_por_id(id)
@@ -18,5 +18,5 @@ class ExameUseCase:
     def deletar_exame(self, id: int):
         return self.exame_repository.deletar_exame(id)
     
-    def atualizar_exame(self, id: int, exame: str, preco: float):
-        return self.exame_repository.atualizar_exame(id, exame, preco)
+    def atualizar_exame(self, id: int, tipo_exame: str, valor: float):
+        return self.exame_repository.atualizar_exame(id, tipo_exame, valor)

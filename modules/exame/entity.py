@@ -3,5 +3,5 @@ from datetime import datetime,time
 
 class ExameEntity(BaseModel):
     id: int 
-    exame: str
-    preco: float
+    tipo_exame: str 
+    valor: float  
