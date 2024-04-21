@@ -49,9 +49,8 @@ class LoginRepository(LoginRepositoryInterface):
                 data.id = id
                 data.usuario = usuario
                 data.senha = senha
-                data.update_create = datetime.utcnow
                 db_connection.session.commit()
-                return self._criar_agenda_objeto(data)
+                return self._criar_login_objeto(data)
             return None
 
     def deletar_login(self, id: int):

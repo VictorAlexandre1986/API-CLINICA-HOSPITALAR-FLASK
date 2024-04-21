@@ -18,5 +18,5 @@ class LoginUseCase:
     def deletar_login(self, id: int):
         return self.login_repository.deletar_login(id)
     
-    def atualizar_login(self,usuario:str, senha:str):
+    def atualizar_login(self,id:int,usuario:str, senha:str):
         return self.login_repository.atualizar_login(id, usuario, senha)
