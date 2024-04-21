@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class VacinaDTO(BaseModel):
-    id: int 
+    id: int | None
     nome: str
     proposito: str
     ml: float

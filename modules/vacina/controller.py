@@ -22,8 +22,12 @@ class VacinaController:
     def buscar_vacinas():
         repository = VacinaRepository()
         result = VacinaUseCase(repository).buscar_vacinas()
-        result = [vacina.dict() for vacina in result]
-        return result
+        vacinas = [vacina.dict() for vacina in result]
+        lista_vacina=[]
+        for vacina in vacinas:
+            vacina['vencimento'] = vacina['vencimento'].strftime("%d/%m/%Y %H:%M:%S") 
+            lista_vacina.append(vacina)
+        return lista_vacina
     
     @staticmethod
     def atualizar_vacina(data: dict, id: int):

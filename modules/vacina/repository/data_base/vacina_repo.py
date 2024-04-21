@@ -21,10 +21,10 @@ class VacinaRepository(VacinaRepositoryInterface):
     def criar_vacina(self, id: int, nome: str, proposito:str, ml: float, estoque:int, vencimento:datetime):
         try:
             with DBConnectionHandler() as db_connection:
-                novo_vacina = Vacina(id=id, nome=nome, proposito=proposito, ml=ml, estoque=estoque, vencimento=vencimento)
-                db_connection.session.add(novo_vacina)
+                nova_vacina = Vacina(id=id, nome=nome, proposito=proposito, ml=ml, estoque=estoque, vencimento=vencimento)
+                db_connection.session.add(nova_vacina)
                 db_connection.session.commit()
-                return self._criar_login_objeto(novo_agenda)
+                return self._criar_vacina_objeto(nova_vacina)
         except Exception as exc:
             raise exc
 
