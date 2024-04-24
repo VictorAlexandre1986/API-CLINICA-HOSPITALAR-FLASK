@@ -14,19 +14,20 @@ class PacienteRepository(PacienteRepositoryInterface):
             nome = paciente.nome,
             cpf = paciente.cpf,
             sexo = paciente.sexo,
+            dt_nasc = paciente.dt_nasc,
             endereco = paciente.endereco,
-            num = paciente.num,
             bairro = paciente.bairro,
             cidade = paciente.cidade,
-            contato = paciente.contato,
-            contato2= paciente.contato2,
-            email = paciente.email
+            estado = paciente.estado,
+            contato= paciente.contato,
+            id_login = paciente.id_login
         )
 
-    def criar_paciente(self, id: int, nome: str, cpf: str, sexo:str, endereco: str, num: str, bairro: str, cidade: str, contato: str, contato2: str, email: str):
+    def criar_paciente(self, id: int, nome: str, cpf: str, sexo:str, dt_nasc: datetime, endereco: str, bairro: str, cidade: str, contato: str, estado: str, id_login: int):
         try:
             with DBConnectionHandler() as db_connection:
-                novo_paciente = Paciente(id=id, nome=nome, cpf=cpf, sexo=sexo, endereco=endereco, num=num, bairro=bairro, cidade=cidade, contato=contato, contato2=contato2, email=email)
+                # dt_nasc = datetime.strptime(dt_nasc, "%Y-%m-%d %H:%M:%S")
+                novo_paciente = Paciente(id=id, nome=nome, cpf=cpf, sexo=sexo, dt_nasc=dt_nasc, endereco=endereco, bairro=bairro, cidade=cidade, estado=estado, contato=contato, id_login=id_login)
                 db_connection.session.add(novo_paciente)
                 db_connection.session.commit()
                 return self._criar_paciente_objeto(novo_paciente)
@@ -50,21 +51,22 @@ class PacienteRepository(PacienteRepositoryInterface):
                 )
             return list_pacientes
         
-    def atualizar_paciente(self, id: int, nome: str, cpf: str, sexo:str, endereco: str, num: str, bairro: str, cidade: str, contato: str, contato2: str, email: str):
+    def atualizar_paciente(self, id: int, nome: str, cpf: str, sexo:str, dt_nasc: datetime, endereco: str, bairro: str, cidade: str, estado: str, contato: str, id_login:int):
         with DBConnectionHandler() as db_connection:
             data = db_connection.session.query(Paciente).filter(Paciente.id == id).one_or_none()
+            # dt_nasc = datetime.strptime(data.dt_nasc, "%Y-%m-%d %H:%M:%S")
             if data:
                 data.id = id
                 data.nome = nome
                 data.cpf = cpf
                 data.sexo = sexo
+                data.dt_nasc = dt_nasc
                 data.endereco = endereco
-                data.num = num
                 data.bairro = bairro
                 data.cidade = cidade
+                data.estado = estado
                 data.contato = contato
-                data.contato2 = contato2
-                data.email = email
+                data.id_login = id_login
                 db_connection.session.commit()
                 return self._criar_paciente_objeto(data)
             return None

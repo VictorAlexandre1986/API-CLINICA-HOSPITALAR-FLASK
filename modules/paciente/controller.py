@@ -10,7 +10,7 @@ class PacienteController:
     def criar_paciente(data: dict):
         data_dto = PacienteDTO(**data)
         repository = PacienteRepository()
-        result = PacienteUseCase(repository).criar_paciente(id = data_dto.id, nome= data_dto.nome, cpf = data_dto.cpf, sexo= data_dto.sexo, endereco= data_dto.endereco, num = data_dto.num, bairro = data_dto.bairro, cidade= data_dto.cidade, contato= data_dto.contato, contato2= data_dto.contato2, email= data_dto.email)
+        result = PacienteUseCase(repository).criar_paciente(id = data_dto.id, nome= data_dto.nome, cpf = data_dto.cpf, sexo= data_dto.sexo, dt_nasc = data_dto.dt_nasc, endereco= data_dto.endereco,  bairro = data_dto.bairro, cidade= data_dto.cidade, estado= data_dto.estado, contato= data_dto.contato, id_login = data_dto.id_login)
         return result
     
     @staticmethod
@@ -24,13 +24,17 @@ class PacienteController:
         repository = PacienteRepository()
         result = PacienteUseCase(repository).buscar_pacientes()
         result = [paciente.dict() for paciente in result]
-        return result
+        lista_pacientes=[]
+        for paciente in result:
+            paciente['dt_nasc'] = paciente['dt_nasc'].strftime("%d/%m/%Y %H:%M:%S")
+            lista_pacientes.append(paciente)
+        return lista_pacientes
     
     @staticmethod
     def atualizar_paciente(data: dict, id: int):
         data_dto = PacienteDTO(**data)
         repository = PacienteRepository()
-        result = PacienteUseCase(repository).atualizar_paciente(id = data_dto.id, nome= data_dto.nome, cpf = data_dto.cpf, sexo= data_dto.sexo, endereco= data_dto.endereco, num = data_dto.num, bairro = data_dto.bairro, cidade= data_dto.cidade, contato= data_dto.contato, contato2= data_dto.contato2, email= data_dto.email)
+        result = PacienteUseCase(repository).atualizar_paciente(id = data_dto.id, nome= data_dto.nome, cpf = data_dto.cpf, sexo= data_dto.sexo, dt_nasc=data_dto.dt_nasc, endereco= data_dto.endereco, bairro = data_dto.bairro, cidade= data_dto.cidade,  estado= data_dto.estado, contato= data_dto.contato, id_login = data_dto.id_login)
         return result
     
     @staticmethod

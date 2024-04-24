@@ -7,10 +7,10 @@ class PacienteEntity(BaseModel):
     nome: str
     cpf: str = Field(..., min_length=11)
     sexo: str
+    dt_nasc : datetime
     endereco: str
-    num: str
     bairro: str
     cidade: str
+    estado : str
     contato: str
-    contato2: str
-    email: str
+    id_login: int
