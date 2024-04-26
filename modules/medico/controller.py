@@ -10,7 +10,7 @@ class MedicoController:
     def criar_medico(data: dict):
         data_dto = MedicoDTO(**data)
         repository = MedicoRepository()
-        result = MedicoUseCase(repository).criar_medico(id = data_dto.id, nome = data_dto.nome, crm = data_dto.crm, especialidade = data_dto.especialidade, contato = data_dto.contato, contato2 = data_dto.contato2, sexo = data_dto.sexo, endereco = data_dto.endereco, num = data_dto.num, bairro = data_dto.bairro, cidade = data_dto.cidade)
+        result = MedicoUseCase(repository).criar_medico(id = data_dto.id, nome = data_dto.nome, crm = data_dto.crm, especialidade = data_dto.especialidade, contato = data_dto.contato, id_login = data_dto.id_login)
         return result
     
     @staticmethod
@@ -30,7 +30,7 @@ class MedicoController:
     def atualizar_medico(data: dict, id: int):
         data_dto = MedicoDTO(**data)
         repository = MedicoRepository()
-        result = MedicoUseCase(repository).atualizar_medico(id = data_dto.id, nome = data_dto.nome, crm = data_dto.crm, especialidade = data_dto.especialidade, contato = data_dto.contato, contato2 = data_dto.contato2, sexo = data_dto.sexo, endereco = data_dto.endereco, num = data_dto.num, bairro = data_dto.bairro, cidade = data_dto.cidade)
+        result = MedicoUseCase(repository).atualizar_medico(id = data_dto.id, nome = data_dto.nome, crm = data_dto.crm, especialidade = data_dto.especialidade, contato = data_dto.contato, id_login=data_dto.id_login)
         return result
     
     @staticmethod

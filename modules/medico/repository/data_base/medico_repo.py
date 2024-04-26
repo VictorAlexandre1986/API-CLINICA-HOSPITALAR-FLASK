@@ -11,21 +11,17 @@ class MedicoRepository(MedicoRepositoryInterface):
     def _criar_medico_objeto(self, medico):
         return MedicoDTO(
             id = medico.id,
+            nome = medico.nome,
             crm = medico.crm,
             especialidade = medico.especialidade,
             contato = medico.contato,
-            contato2 = medico.contato2,
-            sexo = medico.sexo,
-            endereco = medico.endereco,
-            num = medico.num,
-            bairro = medico.bairro,
-            cidade = medico.cidade,
+            id_login = medico.id_login
         )
 
-    def criar_medico(self, id: int, crm: str, especialidade:str, contato:str, contato2:str, sexo:str, endereco:str, num:str, bairro: str, cidade: str):
+    def criar_medico(self, id: int, nome: str, crm: str, especialidade:str, contato:str, id_login: int):
         try:
             with DBConnectionHandler() as db_connection:
-                novo_medico = Medico(id=id, crm=crm, especialidade=especialidade, contato=contato, contato2=contato2, sexo=sexo, endereco=endereco, num=num, bairro=bairro, cidade=cidade)
+                novo_medico = Medico(id=id, nome=nome, crm=crm, especialidade=especialidade, contato=contato, id_login=id_login)
                 db_connection.session.add(novo_medico)
                 db_connection.session.commit()
                 return self._criar_medico_objeto(novo_medico)
@@ -49,20 +45,16 @@ class MedicoRepository(MedicoRepositoryInterface):
                 )
             return list_medicos
         
-    def atualizar_medico(self, id: int, crm: str, especialidade:str, contato:str, contato2:str, sexo:str, endereco:str, num:str, bairro: str, cidade: str):
+    def atualizar_medico(self, id: int, nome: str, crm: str, especialidade:str, contato:str, id_login: int):
         with DBConnectionHandler() as db_connection:
             data = db_connection.session.query(Medico).filter(Medico.id == id).one_or_none()
             if data:
                 data.id = id
+                data.nome = nome
                 data.crm = crm
                 data.especialidade = especialidade
                 data.contato = contato
-                data.contato2 = contato2
-                data.sexo = sexo
-                data.endereco = endereco
-                data.num = num
-                data.bairro = bairro
-                data.cidade = cidade
+                data.id_login = id_login
                 db_connection.session.commit()
                 return self._criar_medico_objeto(data)
             return None

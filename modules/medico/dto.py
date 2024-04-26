@@ -8,9 +8,4 @@ class MedicoDTO(BaseModel):
     crm: str
     especialidade: str
     contato: str
-    contato2: str
-    sexo: str
-    endereco: str
-    num: str
-    bairro: str
-    cidade: str
+    id_login: int
