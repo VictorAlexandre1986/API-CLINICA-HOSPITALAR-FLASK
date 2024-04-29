@@ -6,6 +6,6 @@ class AgendaEntity(BaseModel):
     id: int 
     cpf: str = Field(..., min_length=11)
     dia: datetime
-    hora: time
-    procedimento: str
-    medico: str 
+    id_procedimento: int | None
+    id_medico: int | None
+    id_cirurgia : int | None

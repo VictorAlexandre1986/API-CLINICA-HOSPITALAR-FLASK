@@ -13,15 +13,15 @@ class AgendaRepository(AgendaRepositoryInterface):
             id = agenda.id,
             cpf = agenda.cpf,
             dia = agenda.dia,
-            hora = agenda.hora,
-            procedimento = agenda.procedimento,
-            medico = agenda.medico
+            id_procedimento = agenda.procedimento,
+            id_medico = agenda.medico,
+            id_cirurgia = agenda.id_cirurgia
         )
 
-    def criar_agenda(self, id: int, cpf: str, dia:datetime, hora:time, procedimento:str, medico:str):
+    def criar_agenda(self, id: int, cpf: str, dia:datetime, id_procedimento: int, id_medico: int, id_cirurgia: int):
         try:
             with DBConnectionHandler() as db_connection:
-                novo_agenda = Agenda(id=id, cpf=cpf, dia=dia, hora=hora, procedimento=procedimento, medico=medico)
+                novo_agenda = Agenda(id=id, cpf=cpf, dia=dia, id_procedimento=id_procedimento, id_medico=id_medico, id_cirurgia=id_cirurgia)
                 db_connection.session.add(novo_agenda)
                 db_connection.session.commit()
                 return self._criar_agenda_objeto(novo_agenda)
@@ -45,16 +45,16 @@ class AgendaRepository(AgendaRepositoryInterface):
                 )
             return list_agendas
         
-    def atualizar_agenda(self, id: int, cpf: str, dia:datetime, hora:time, procedimento:str, medico:str):
+    def atualizar_agenda(self, id: int, cpf: str, dia:datetime, id_procedimento:int, id_medico:int, id_cirurgia:int):
         with DBConnectionHandler() as db_connection:
             data = db_connection.session.query(Agenda).filter(Agenda.id == id).one_or_none()
             if data:
                 data.id = id
                 data.cpf = cpf
                 data.dia = dia
-                data.hora = hora
-                data.procedimento = procedimento
-                data.medico = medico
+                data.id_procedimento = id_procedimento
+                data.id_medico = id_medico
+                data.id_cirurgia = id_cirurgia
                 db_connection.session.commit()
                 return self._criar_agenda_objeto(data)
             return None
