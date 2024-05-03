@@ -1,5 +1,4 @@
-# Forum de perguntas e respostas
-Forum feito em Python utilizando o framework Flask, foi utilizado clean architecture para desenvolver esse projeto.Para rodar esse projeto é necessário seguir as seguintes etapas. 
+# Sistema de gerencimento de clinica hospitalar
 
 É necessário criar um ambiente virtual com:
 ``` 
